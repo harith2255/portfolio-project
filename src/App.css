@@ -20,6 +20,14 @@
   --card-border: rgba(148, 163, 184, 0.1);
 }
 
+/* CRITICAL FIX: Prevent horizontal overflow */
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  position: relative;
+}
+
 body {
   line-height: 1.6;
   color: var(--text-color);
@@ -32,25 +40,29 @@ body {
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   width: 100%;
   height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll in app container */
 }
 
 .app.loaded {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Replace your existing navbar and mobile navigation styles with these */
+
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   padding: 1.5rem 5%;
   background: var(--nav-bg);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  box-shadow: 0 4px 30px rgba(0, 0, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid var(--card-border);
 }
 
@@ -59,6 +71,7 @@ body {
   font-weight: 700;
   color: white;
   text-shadow: 0 0 10px rgba(244, 114, 182, 0.3);
+  z-index: 1100;
 }
 
 .nav-links {
@@ -95,9 +108,9 @@ body {
   width: 100%;
 }
 
-/* Hamburger menu button */
+/* Hamburger menu button - HIDDEN by default */
 .menu-toggle {
-  display: none; /* hidden on desktop */
+  display: none;
   flex-direction: column;
   justify-content: space-around;
   width: 25px;
@@ -136,16 +149,18 @@ body {
   transform: rotate(-45deg);
 }
 
-/* Responsive styles */
+/* MOBILE STYLES - Only apply on small screens */
 @media (max-width: 768px) {
+  /* Show hamburger menu on mobile */
   .menu-toggle {
-    display: flex; /* show hamburger on small screens */
+    display: flex;
   }
 
+  /* Hide desktop nav links and transform to mobile menu */
   .nav-links {
     position: fixed;
-    top: 70px; /* adjust if navbar height changes */
-    right: 0;
+    top: 70px; /* Below navbar */
+    right: -250px; /* Start completely off-screen */
     height: calc(100vh - 70px);
     width: 200px;
     background: var(--nav-bg);
@@ -153,14 +168,60 @@ body {
     flex-direction: column;
     gap: 1.5rem;
     padding: 2rem;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
+    transition: right 0.3s ease-in-out; /* Slide from right */
     box-shadow: -2px 0 15px rgba(0, 0, 0, 0.3);
+    border-left: 1px solid var(--card-border);
+    visibility: hidden; /* CRITICAL: Hide by default */
+    pointer-events: none; /* CRITICAL: Disable interactions when hidden */
   }
 
-  /* Show nav links when menu is open */
+  /* Show mobile menu when open class is added */
   .nav-links.open {
-    transform: translateX(0);
+    right: 0; /* Slide into view */
+    visibility: visible; /* CRITICAL: Make visible when open */
+    pointer-events: auto; /* CRITICAL: Enable interactions when open */
+  }
+
+  /* Ensure nav links stack vertically on mobile */
+  .nav-links a {
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+}
+
+/* DESKTOP STYLES - Ensure mobile menu is completely hidden */
+@media (min-width: 769px) {
+  /* Force hide hamburger menu */
+  .menu-toggle {
+    display: none !important;
+  }
+
+  /* Force show desktop navigation */
+  .nav-links {
+    position: static !important;
+    right: auto !important;
+    flex-direction: row !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    height: auto !important;
+    width: auto !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    visibility: visible !important; /* CRITICAL: Always visible on desktop */
+    pointer-events: auto !important; /* CRITICAL: Always interactive on desktop */
+  }
+
+  /* Reset nav link styles for desktop */
+  .nav-links a {
+    display: inline-block !important;
+    padding: 0 !important;
+    border-bottom: none !important;
   }
 }
 
