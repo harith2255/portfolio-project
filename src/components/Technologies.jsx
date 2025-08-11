@@ -64,18 +64,14 @@ const Technologies = () => {
           animate={inView ? "animate" : "initial"}
           variants={staggerContainer}
         >
-          {allTechnologies.map(({ name, icon }) => (
+          {allTechnologies.map(({ icon }) => (
             <motion.div
-              key={name}
               className="tech-box"
               variants={fadeInUp}
               whileHover={{ scale: 1.1 }}
-              title={name}
-              aria-label={name}
               role="img"
             >
               <div className="icon">{icon}</div>
-              <span className="tech-name">{name}</span>
             </motion.div>
           ))}
         </motion.div>
