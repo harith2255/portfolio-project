@@ -27,7 +27,7 @@ const educationData = [
     institution: "CJMA HSS Varandarapilly",
     year: "2020 - 2022",
     description:
-      "Focused on Science stream with subjects like Physics, Chemistry, Mathematics, and Computer Science.",
+      "Focused on Computer Science stream with emphasis on programming fundamentals, algorithms, and computational problem-solving.",
   },
   {
     degree: "Secondary School Education",
