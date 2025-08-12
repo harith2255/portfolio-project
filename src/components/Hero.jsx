@@ -139,7 +139,6 @@ const Hero = () => {
     "clean code craftsman",
     "UI/UX mindful",
     "problem-solver by nature",
-    "dark mode advocate"
   ],
     
   ],
