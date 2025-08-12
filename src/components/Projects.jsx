@@ -54,10 +54,9 @@ const Projects = () => {
           />
           <h3>CRUD Master</h3>
           <p>
-            CRUD Master is a modern web app for adding, editing, and deleting
-            products with ease. Featuring image support, price management, and
-            dark mode, it’s a stylish and efficient tool for managing
-            inventories.
+            CRUD Master is a sleek web app for adding, editing, and deleting
+            products with image support, price management, and dark mode. Built
+            to practice CRUD operations with clean and responsive design.
           </p>
           <div className="project-tech">
             <span>React.js</span>
