@@ -69,6 +69,20 @@ const Hero = () => {
               {" "}
               Contact Me
             </motion.a>
+            {/* Resume Download Button */}
+            <motion.a
+              href="/Harith-kp-resume.pdf"
+              download
+              className="cta-secondary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <i
+                className="fas fa-download"
+                style={{ marginRight: "0.5rem" }}
+              ></i>
+              Resume
+            </motion.a>
           </motion.div>
           <motion.div className="social-links" variants={staggerContainer}>
             <motion.a href="https://github.com/harith2255" target="_blank">

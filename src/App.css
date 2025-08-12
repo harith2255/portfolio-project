@@ -5,17 +5,17 @@
 }
 
 :root {
-  --primary-color: #6d28d9; /* Softer professional purple */
+  --primary-color: #6d28d9;
   --primary-dark: #4c1d95;
-  --secondary-color: #2563eb; /* Trustworthy deep blue */
-  --accent-color: #818cf8; /* Muted blue-purple */
-  --text-color: #f3f4f6; /* Slightly brighter */
-  --light-text: #a8b2d1; /* Better readability */
+  --secondary-color: #2563eb;
+  --accent-color: #818cf8;
+  --text-color: #f3f4f6;
+  --light-text: #a8b2d1;
   --background: #0f172a;
   --section-bg: #1e293b;
   --card-bg: #1e293b;
   --gradient-start: #0f172a;
-  --gradient-end: #4338ca; /* Blueish gradient end */
+  --gradient-end: #4338ca;
   --nav-bg: rgba(15, 23, 42, 0.85);
   --card-border: rgba(148, 163, 184, 0.1);
 }
@@ -25,7 +25,6 @@
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   width: 100%;
-
   overflow: hidden;
 }
 
@@ -121,7 +120,7 @@
   transform-origin: 1px;
 }
 
-/* Animate hamburger bars when open */
+/* Animate hamburger bars */
 .bar.open:nth-child(1) {
   transform: rotate(45deg);
 }
@@ -145,8 +144,8 @@
   /* Hide desktop nav links and transform to mobile menu */
   .nav-links {
     position: fixed;
-    top: 70px; /* Below navbar */
-    right: -250px; /* Start completely off-screen */
+    top: 70px;
+    right: -250px;
     height: calc(100vh - 70px);
     width: 200px;
     background: var(--nav-bg);
@@ -154,21 +153,20 @@
     flex-direction: column;
     gap: 1.5rem;
     padding: 2rem;
-    transition: right 0.3s ease-in-out; /* Slide from right */
+    transition: right 0.3s ease-in-out;
     box-shadow: -2px 0 15px rgba(0, 0, 0, 0.3);
     border-left: 1px solid var(--card-border);
-    visibility: hidden; /* CRITICAL: Hide by default */
-    pointer-events: none; /* CRITICAL: Disable interactions when hidden */
+    visibility: hidden;
+    pointer-events: none;
   }
 
   /* Show mobile menu when open class is added */
   .nav-links.open {
-    right: 0; /* Slide into view */
-    visibility: visible; /* CRITICAL: Make visible when open */
-    pointer-events: auto; /* CRITICAL: Enable interactions when open */
+    right: 0;
+    visibility: visible;
+    pointer-events: auto;
   }
 
-  /* Ensure nav links stack vertically on mobile */
   .nav-links a {
     display: block;
     padding: 0.5rem 0;
@@ -199,8 +197,8 @@
     padding: 0 !important;
     box-shadow: none !important;
     border: none !important;
-    visibility: visible !important; /* CRITICAL: Always visible on desktop */
-    pointer-events: auto !important; /* CRITICAL: Always interactive on desktop */
+    visibility: visible !important;
+    pointer-events: auto !important;
   }
 
   /* Reset nav link styles for desktop */
@@ -254,7 +252,7 @@
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .glitch {
-  font-size: 4.5rem;
+  font-size: 4.2rem;
   font-weight: 800;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   position: relative;
@@ -274,11 +272,14 @@
 }
 .cta-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
   margin-bottom: 2rem;
 }
 .cta-primary,
 .cta-secondary {
+  display: flex;
   padding: 0.8rem 2rem;
   border-radius: 50px;
   font-weight: 600;
