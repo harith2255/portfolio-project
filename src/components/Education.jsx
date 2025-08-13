@@ -24,7 +24,7 @@ const educationData = [
   },
   {
     degree: "Higher Secondary Education",
-    institution: "CJMA HSS Varandarapilly",
+    institution: "CJMA HSS Pallikunnu",
     year: "2020 - 2022",
     description:
       "Focused on Computer Science stream with emphasis on programming fundamentals, algorithms, and computational problem-solving.",
